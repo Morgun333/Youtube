@@ -74,11 +74,11 @@ public class MainTest {
             AllureUtils.screenshotAfterStep();
         });
 
-       Allure.step("Пользователь вводит в поисковую строку «Первое видео на youtube»", () -> {
+        Allure.step("Пользователь вводит в поисковую строку «Первое видео на youtube»", () -> {
             AllureUtils.screenshotBeforeStep();
 
-           wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[id='search']")))
-                   .sendKeys("Первое видео на youtube");
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[id='search']")))
+                    .sendKeys("Первое видео на youtube");
 
             AllureUtils.screenshotAfterStep();
         });
@@ -96,7 +96,7 @@ public class MainTest {
             AllureUtils.screenshotBeforeStep();
 
             WebElement elm = WebDriverSingleton.getDriver().findElement(By.cssSelector("a[href='/watch?v=jNQXAC9IVRw']"));
-            ((JavascriptExecutor)WebDriverSingleton.getDriver()).executeScript("arguments[0].scrollIntoView(true);",elm);
+            ((JavascriptExecutor) WebDriverSingleton.getDriver()).executeScript("arguments[0].scrollIntoView(true);", elm);
             elm.click();
 
             AllureUtils.screenshotAfterStep();
@@ -155,5 +155,18 @@ public class MainTest {
 
             Thread.sleep(10000);
         });
-    }
+
+// тест ветка для коммита
+
+        Allure.step ("Пользователь нажимает на кнопку «Пауза»", ()->
+    {
+        AllureUtils.screenshotBeforeStep();
+
+        getDriver()
+                .findElement(By.cssSelector("button[class='ytp-play-button ytp-button']")).click();
+
+        AllureUtils.screenshotAfterStep();
+
+        Thread.sleep(10000);
+    });
 }
